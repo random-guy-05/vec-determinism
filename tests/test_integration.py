@@ -1,9 +1,5 @@
-from __future__ import annotations
-
 import subprocess
 import sys
-from pathlib import Path
-
 
 EXPORTER = r"""
 import sys
@@ -25,7 +21,7 @@ data.write_h5ad(out)
 """
 
 
-def _script(tmp_path: Path) -> Path:
+def _script(tmp_path):
     path = tmp_path / "exporter.py"
     path.write_text(EXPORTER)
     return path
