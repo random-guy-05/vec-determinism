@@ -34,7 +34,7 @@ def main(argv: list[str] | None = None) -> int:
                 try:
                     record["sha256"] = sha256_file(output)
                     record["scorer_fingerprint"] = scorer_fingerprint(output, args.task)
-                except Exception as exc:
+                except (OSError, ValueError, KeyError, TypeError, RuntimeError) as exc:
                     record["fingerprint_error"] = f"{type(exc).__name__}: {exc}"
                     record["returncode"] = 2
             records.append(record)
